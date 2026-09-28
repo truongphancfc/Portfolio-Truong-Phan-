@@ -17,7 +17,9 @@ Trong thư mục repository, chạy:
 python3 -m http.server 8765
 ```
 
-Mở `http://localhost:8765` để xem trang và kiểm tra cả bản tiếng Việt, tiếng Anh, điện thoại trước khi đưa lên GitHub.## Cập nhật website
+Mở `http://localhost:8765` để xem trang và kiểm tra cả bản tiếng Việt, tiếng Anh, điện thoại trước khi đưa lên GitHub.
+
+## Cập nhật website
 
 Repository đã kết nối với project Vercel. Mỗi commit trên nhánh `main` sẽ tự deploy production. Có thể sửa file trực tiếp trên GitHub hoặc làm việc trên máy:
 
