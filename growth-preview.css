@@ -112,6 +112,4 @@ html { scroll-padding-top: 96px; }
   .growth-step { min-height:142px; }
   .growth-step:last-child { grid-column:1/-1; min-height:115px; }
   .growth-step b { margin-bottom:19px; }
-  nav [data-navlink]:not([href="#growth"]) { display:none; }
-  nav [data-navlink] { font-size:11px !important; }
 }

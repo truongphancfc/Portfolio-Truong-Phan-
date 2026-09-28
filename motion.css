@@ -1,0 +1,90 @@
+/* Navigation state and restrained motion layered onto the existing portfolio. */
+nav { gap: clamp(14px, 2.4vw, 34px); transition: background .35s ease, border-color .35s ease, box-shadow .35s ease; }
+nav.is-scrolled {
+  background: rgba(8, 11, 22, .9) !important;
+  border-bottom-color: rgba(181, 171, 252, .16) !important;
+  box-shadow: 0 12px 40px rgba(2, 4, 14, .25);
+}
+.nav-actions { position: relative; isolation: isolate; margin-left: auto; }
+.language-switch { flex: 0 0 auto; }
+.nav-actions [data-navlink], .nav-actions [role="group"] { position: relative; z-index: 1; }
+.nav-actions [data-navlink] {
+  white-space: nowrap;
+  transition: color .25s ease, transform .35s cubic-bezier(.16, 1, .3, 1);
+}
+.nav-actions [data-navlink]:hover { transform: translateY(-2px); }
+.nav-actions [data-navlink].is-active { color: #f5f4ff !important; }
+.nav-morph-indicator {
+  position: absolute;
+  inset: 0 auto auto 0;
+  z-index: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  border: 1px solid rgba(181, 171, 252, .3);
+  border-radius: 999px;
+  background: linear-gradient(115deg, rgba(111, 101, 194, .24), rgba(86, 113, 204, .16));
+  box-shadow: 0 0 22px rgba(114, 112, 218, .1) inset;
+  transition: transform .55s cubic-bezier(.16, 1, .3, 1), width .55s cubic-bezier(.16, 1, .3, 1), height .55s cubic-bezier(.16, 1, .3, 1), opacity .25s ease;
+}
+.nav-morph-indicator.is-visible { opacity: 1; }
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 90;
+  height: 3px;
+  pointer-events: none;
+  background: rgba(143, 160, 255, .09);
+}
+.scroll-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #6c81e9, #b5abfc 58%, #d2c3ff);
+  box-shadow: 0 0 16px rgba(181, 171, 252, .55);
+}
+[data-cta] { transition: transform .4s cubic-bezier(.16, 1, .3, 1), border-radius .4s cubic-bezier(.16, 1, .3, 1), box-shadow .4s ease; }
+[data-cta]:hover, [data-cta]:focus-visible {
+  transform: translateY(-3px);
+  border-radius: 16px !important;
+  box-shadow: 0 16px 38px rgba(74, 84, 197, .36) !important;
+}
+@media (max-width: 690px) {
+  html { scroll-padding-top: 112px; }
+  nav {
+    flex-wrap: wrap;
+    row-gap: 9px;
+    background: rgba(8, 11, 22, .94) !important;
+  }
+  nav > a { order: 1; min-width: 0; }
+  nav .language-switch { order: 2; margin-left: auto; }
+  nav .nav-actions {
+    order: 3;
+    flex: 0 0 100%;
+    width: 100%;
+    margin: 0;
+    padding: 5px 2px 8px;
+    gap: 8px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+  nav .nav-actions::-webkit-scrollbar { display: none; }
+  nav .nav-actions [data-navlink] {
+    display: block;
+    flex: 0 0 auto;
+    max-width: none !important;
+    padding: 5px 10px;
+    font-size: 12px !important;
+    line-height: 1.3;
+  }
+  nav .nav-morph-indicator { border-radius: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  [data-reveal], [data-morph] { opacity: 1 !important; transform: none !important; }
+}

@@ -6,6 +6,7 @@ Mã nguồn của [truongphan-portfolio-interface.vercel.app](https://truongphan
 
 - `index.html`: nội dung trang, gồm các mục `#growth-shopee`, `#growth-ads`, `#growth-ops` và portfolio thiết kế. Khi sửa chữ, cập nhật cả bản `data-vi` và `data-en`.
 - `growth-preview.css`: giao diện dashboard Shopee, Meta và phần vận hành; có quy tắc cho điện thoại ở cuối file.
+- `motion.css`: giao diện scrollspy, thanh tiến độ cuộn, menu điện thoại và trạng thái giảm chuyển động.
 - `assets/`: ảnh, video và hai file CV công khai. Giữ nguyên tên file khi thay thế, hoặc sửa đường dẫn tương ứng trong `index.html`.
 - `support.js` và `_ds/`: phần hiệu ứng và giao diện của portfolio gốc.
 
