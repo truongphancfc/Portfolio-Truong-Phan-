@@ -1,0 +1,12 @@
+.DS_Store
+.vercel/
+.env*
+node_modules/
+*.log
+
+# Giữ dữ liệu quảng cáo gốc ngoài repository công khai.
+*.csv
+*.xls
+*.xlsx
+private-data/
+reports/

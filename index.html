@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trường Phan — Design, Growth &amp; Operations</title>
+<meta name="description" content="Portfolio của Trường Phan: thiết kế thương hiệu, vận hành marketing và hiệu suất Meta Ads, Shopee Ads cho ngành hàng tiêu dùng và nông nghiệp.">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-86fce97f-eb77-4fb9-aa71-2c625c0c7ec0/styles.css">
+<link rel="stylesheet" href="growth-preview.css">
+<script src="_ds/nocturne-86fce97f-eb77-4fb9-aa71-2c625c0c7ec0/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:#080b16; color:#e9e9ed; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a { color:#b5abfc; text-decoration:none; }
+  a:hover { color:#e7e5fe; }
+  ::selection { background:rgba(145,132,217,.35); color:#f5f4ff; }
+  ::-webkit-scrollbar { width:10px; }
+  ::-webkit-scrollbar-track { background:#0b0f1c; }
+  ::-webkit-scrollbar-thumb { background:#2a3050; border-radius:6px; }
+  ::-webkit-scrollbar-thumb:hover { background:#3a4270; }
+  @keyframes floaty { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-16px) } }
+  @keyframes cueBob { 0%,100%{ transform:translateY(0); opacity:.5 } 50%{ transform:translateY(9px); opacity:1 } }
+  @keyframes spinSlow { to { transform:rotate(360deg) } }
+  @keyframes gridDrift { to { background-position:80px 80px } }
+  @keyframes marq { to { transform:translateX(-50%) } }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative; font-family:Inter,system-ui,sans-serif; background:radial-gradient(1200px 800px at 78% -5%, #14224a 0%, rgba(20,34,74,0) 55%), radial-gradient(1000px 900px at 8% 30%, #16173a 0%, rgba(22,23,58,0) 50%), linear-gradient(180deg,#080b16 0%,#0a0e1e 40%,#080b16 100%); min-height:100vh; overflow:hidden;">
+
+  <!-- cursor glow -->
+  <div ref="{{ glowRef }}" style="position:fixed; top:0; left:0; width:520px; height:520px; margin:-260px 0 0 -260px; border-radius:50%; pointer-events:none; z-index:60; background:radial-gradient(circle, rgba(120,140,255,.16) 0%, rgba(145,132,217,.08) 35%, rgba(0,0,0,0) 68%); mix-blend-mode:screen; will-change:transform;"></div>
+
+  <!-- faint background wordmark -->
+  <div aria-hidden="true" style="position:absolute; top:120px; left:-2vw; font-family:Sora,Inter,sans-serif; font-weight:700; font-size:26vw; line-height:.8; letter-spacing:-.03em; color:rgba(150,160,220,.03); white-space:nowrap; pointer-events:none; user-select:none; z-index:0;">PHAN</div>
+
+  <!-- NAV -->
+  <nav style="position:fixed; top:0; left:0; right:0; z-index:80; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,5vw,64px); backdrop-filter:blur(14px); background:linear-gradient(180deg,rgba(8,11,22,.72),rgba(8,11,22,0)); border-bottom:1px solid rgba(150,160,220,.06);">
+    <a href="#home" style="display:flex; align-items:center; gap:12px;">
+      <span style="display:grid; place-items:center; width:38px; height:38px; border-radius:10px; border:1px solid rgba(181,171,252,.4); background:linear-gradient(150deg,#1a2246,#0d1226); font-family:Sora,sans-serif; font-weight:700; font-size:16px; color:#cfd3e5; box-shadow:0 0 24px rgba(90,110,220,.25) inset;">TP</span>
+      <span style="display:flex; flex-direction:column; line-height:1.05;">
+        <span style="font-family:Sora,sans-serif; font-weight:600; font-size:15px; color:#eef0fb; letter-spacing:.01em;">Trường Phan</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:#7a80a8;">Design · Growth · Operations</span>
+      </span>
+    </a>
+    <div style="display:flex; align-items:center; gap:clamp(14px,2.4vw,34px);">
+      <a href="#growth" style="font-size:13px; color:#d4cff8;" data-navlink><span data-vi>Vận hành &amp; Ads</span><span data-en style="display:none">Growth &amp; Ops</span></a>
+      <a href="#work" style="font-size:13px; color:#aeb3cf;" data-navlink><span data-vi>Biển quảng cáo</span><span data-en style="display:none">Billboards</span></a>
+      <a href="#packaging" style="font-size:13px; color:#aeb3cf;" data-navlink><span data-vi>Bao bì</span><span data-en style="display:none">Packaging</span></a>
+      <a href="#brand" style="font-size:13px; color:#aeb3cf;" data-navlink><span data-vi>Thương hiệu</span><span data-en style="display:none">Brand</span></a>
+      <a href="#photo" style="font-size:13px; color:#aeb3cf;" data-navlink><span data-vi>Nhiếp ảnh</span><span data-en style="display:none">Photo</span></a>
+      <div ref="{{ langRef }}" role="group" style="display:flex; align-items:center; border:1px solid rgba(150,160,220,.18); border-radius:999px; overflow:hidden; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.06em; user-select:none;">
+        <button data-lang="vi" style="padding:7px 12px; border:0; background:#5d5294; color:#f5f4ff; cursor:pointer;">VI</button>
+        <button data-lang="en" style="padding:7px 12px; border:0; background:transparent; color:#9297b3; cursor:pointer;">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" data-screen-label="Hero" style="position:relative; z-index:2; min-height:100vh; display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:40px; padding:120px clamp(20px,5vw,64px) 60px; max-width:1440px; margin:0 auto;">
+    <div style="position:relative;">
+      <div data-parallax data-speed="0.06" style="display:inline-flex; align-items:center; gap:10px; padding:7px 14px; border:1px solid rgba(181,171,252,.25); border-radius:999px; background:rgba(30,36,74,.35); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#b5abfc; margin-bottom:26px;">
+        <span style="width:7px; height:7px; border-radius:50%; background:#8fa0ff; box-shadow:0 0 12px #8fa0ff;"></span>
+        Portfolio · 2026
+      </div>
+      <h1 style="font-family:Sora,Inter,sans-serif; font-weight:700; font-size:clamp(46px,7.4vw,104px); line-height:.92; letter-spacing:-.03em; margin:0 0 22px; color:#f3f5fe;">
+        Trường<br><span style="background:linear-gradient(100deg,#8fa0ff 0%,#b5abfc 45%,#5f7cf0 100%); -webkit-background-clip:text; background-clip:text; color:transparent;">Phan</span>
+      </h1>
+      <p style="font-size:clamp(17px,1.7vw,22px); font-weight:500; color:#d3d7ee; margin:0 0 12px; max-width:30ch;"><span data-vi>Thiết kế · Vận hành · Performance Ads</span><span data-en style="display:none">Design · Operations · Performance Ads</span></p>
+      <p style="font-size:15.5px; line-height:1.7; color:#8f95b6; margin:0 0 34px; max-width:44ch;"><span data-vi>8 năm kết nối thương hiệu, đội ngũ và kênh bán — từ thiết kế, triển khai chiến dịch đến đo lường hiệu quả cho ngành tiêu dùng &amp; nông nghiệp.</span><span data-en style="display:none">Eight years connecting brands, teams and channels — from design and campaign delivery to performance measurement in consumer and agriculture.</span></p>
+      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+        <a href="#growth" style="display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:999px; background:linear-gradient(100deg,#5d5294,#3a4bb0); color:#f5f4ff; font-weight:600; font-size:14px; box-shadow:0 10px 30px rgba(60,80,200,.3); border:1px solid rgba(181,171,252,.4);" data-cta>
+          <span data-vi>Xem vận hành &amp; Ads</span><span data-en style="display:none">View Growth &amp; Ops</span>
+          <span style="font-size:16px;">↓</span>
+        </a>
+        <a href="#work" style="display:inline-flex; align-items:center; gap:10px; padding:14px 24px; border-radius:999px; border:1px solid rgba(150,160,220,.25); color:#cdd2ec; font-weight:500; font-size:14px;"><span data-vi>Xem thiết kế</span><span data-en style="display:none">View design</span></a>
+      </div>
+    </div>
+
+    <div data-parallax data-speed="-0.09" style="position:relative;">
+      <div ref="{{ portraitRef }}" style="position:relative; border-radius:20px; overflow:hidden; aspect-ratio:1086/1448; box-shadow:0 40px 120px rgba(20,40,140,.45); border:1px solid rgba(140,155,230,.18); will-change:transform;">
+        <img src="assets/portrait.png" alt="Trường Phan" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(8,11,22,0) 55%,rgba(8,11,22,.55) 100%), radial-gradient(120% 80% at 20% 0%, rgba(60,90,230,.16), transparent 60%);"></div>
+        <div style="position:absolute; left:18px; bottom:16px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:#c9cffb;">Cần Thơ · Việt Nam</div>
+      </div>
+      <div aria-hidden="true" style="position:absolute; inset:-30px -30px auto auto; width:120px; height:120px; border:1px solid rgba(181,171,252,.2); border-radius:50%; animation:spinSlow 26s linear infinite;"></div>
+    </div>
+
+    <div style="position:absolute; left:clamp(20px,5vw,64px); bottom:26px; display:flex; align-items:center; gap:12px; color:#666c92;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:#666c92;">Scroll</span>
+      <span style="display:inline-block; width:1px; height:34px; background:linear-gradient(#8fa0ff,transparent); animation:cueBob 1.8s ease-in-out infinite;"></span>
+    </div>
+  </header>
+
+  <!-- MARQUEE of disciplines -->
+  <div style="position:relative; z-index:2; border-top:1px solid rgba(150,160,220,.07); border-bottom:1px solid rgba(150,160,220,.07); padding:20px 0; overflow:hidden; background:rgba(10,14,30,.4);">
+    <div style="display:flex; width:max-content; animation:marq 34s linear infinite; gap:0;">
+      <div style="display:flex; gap:52px; padding-right:52px; font-family:Sora,sans-serif; font-weight:600; font-size:20px; color:#3f466e; align-items:center; white-space:nowrap;">
+        <span>Growth &amp; Operations</span><span style="color:#5d5294;">✦</span><span>Meta &amp; Shopee Ads</span><span style="color:#5d5294;">✦</span><span>Brand Identity</span><span style="color:#5d5294;">✦</span><span>Packaging Design</span><span style="color:#5d5294;">✦</span><span>Billboard &amp; OOH</span><span style="color:#5d5294;">✦</span><span>Motion Graphics</span><span style="color:#5d5294;">✦</span><span>Photography</span><span style="color:#5d5294;">✦</span>
+      </div>
+      <div aria-hidden="true" style="display:flex; gap:52px; padding-right:52px; font-family:Sora,sans-serif; font-weight:600; font-size:20px; color:#3f466e; align-items:center; white-space:nowrap;">
+        <span>Growth &amp; Operations</span><span style="color:#5d5294;">✦</span><span>Meta &amp; Shopee Ads</span><span style="color:#5d5294;">✦</span><span>Brand Identity</span><span style="color:#5d5294;">✦</span><span>Packaging Design</span><span style="color:#5d5294;">✦</span><span>Billboard &amp; OOH</span><span style="color:#5d5294;">✦</span><span>Motion Graphics</span><span style="color:#5d5294;">✦</span><span>Photography</span><span style="color:#5d5294;">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="portfolio-about" style="position:relative; z-index:2; max-width:1000px; margin:0 auto; padding:clamp(80px,11vw,150px) clamp(20px,5vw,64px);">
+    <div data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:#6f76a0; margin-bottom:22px;">— <span data-vi>Giới thiệu</span><span data-en style="display:none">About</span></div>
+      <p style="font-family:Sora,Inter,sans-serif; font-weight:500; font-size:clamp(24px,3.2vw,40px); line-height:1.35; letter-spacing:-.02em; color:#e9ecfb; margin:0 0 40px;">
+        <span data-vi>Làm việc tại giao điểm giữa <span style="color:#b5abfc;">thiết kế</span>, <span style="color:#8fa0ff;">vận hành</span> và <span style="color:#b5abfc;">đo lường hiệu quả</span> — để ý tưởng thành chiến dịch được triển khai trọn vẹn.</span>
+        <span data-en style="display:none">Working where <span style="color:#b5abfc;">design</span>, <span style="color:#8fa0ff;">operations</span> and <span style="color:#b5abfc;">measurement</span> meet — turning ideas into campaigns that are fully delivered.</span>
+      </p>
+      <div style="display:grid; grid-template-columns:1.05fr 1fr; gap:clamp(28px,5vw,56px); align-items:start;">
+        <p style="font-size:15.5px; line-height:1.85; color:#9298bb; margin:0;"><span data-vi>Trong các vai trò thiết kế, quản lý marketing và vận hành, tôi đưa công việc đi từ brief, phân bổ nguồn lực, sản xuất tài sản đến triển khai và đọc báo cáo. Tôi phối hợp các nhóm kinh doanh, sản xuất và kênh bán để giữ tiến độ, chất lượng và một mục tiêu đo lường chung.</span><span data-en style="display:none">Across design, marketing management and operations roles, I move work from brief and resource planning through asset production, launch and reporting. I connect sales, production and channel teams around delivery quality, deadlines and shared measures.</span></p>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#6f76a0; margin-bottom:6px;"><span data-vi>Lĩnh vực</span><span data-en style="display:none">Capabilities</span></div>
+          <div style="display:flex; gap:16px; padding:14px 0; border-top:1px solid rgba(150,160,220,.1);"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d6494; padding-top:3px; min-width:24px;">01</span><div><div style="font-size:14.5px; color:#e4e7f5; font-weight:500;"><span data-vi>Nhận diện thương hiệu</span><span data-en style="display:none">Brand identity</span></div><div style="font-size:12.5px; color:#7b81a6; margin-top:2px;"><span data-vi>Logo · Hệ thống · Guideline</span><span data-en style="display:none">Logo · System · Guidelines</span></div></div></div>
+          <div style="display:flex; gap:16px; padding:14px 0; border-top:1px solid rgba(150,160,220,.1);"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d6494; padding-top:3px; min-width:24px;">02</span><div><div style="font-size:14.5px; color:#e4e7f5; font-weight:500;"><span data-vi>Bao bì &amp; nhãn</span><span data-en style="display:none">Packaging &amp; labels</span></div><div style="font-size:12.5px; color:#7b81a6; margin-top:2px;"><span data-vi>Chai · Túi · Can · Quy cách in</span><span data-en style="display:none">Bottles · Pouches · Cans · Print specs</span></div></div></div>
+          <div style="display:flex; gap:16px; padding:14px 0; border-top:1px solid rgba(150,160,220,.1);"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d6494; padding-top:3px; min-width:24px;">03</span><div><div style="font-size:14.5px; color:#e4e7f5; font-weight:500;"><span data-vi>Biển quảng cáo &amp; OOH</span><span data-en style="display:none">Billboard &amp; OOH</span></div><div style="font-size:12.5px; color:#7b81a6; margin-top:2px;"><span data-vi>Bố cục khổ lớn · Key visual</span><span data-en style="display:none">Large-format layout · Key visuals</span></div></div></div>
+          <div style="display:flex; gap:16px; padding:14px 0; border-top:1px solid rgba(150,160,220,.1);"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d6494; padding-top:3px; min-width:24px;">04</span><div><div style="font-size:14.5px; color:#e4e7f5; font-weight:500;"><span data-vi>3D &amp; chuyển động</span><span data-en style="display:none">3D &amp; motion</span></div><div style="font-size:12.5px; color:#7b81a6; margin-top:2px;"><span data-vi>Render sản phẩm · Video quảng cáo</span><span data-en style="display:none">Product render · Ad video</span></div></div></div>
+          <div style="display:flex; gap:16px; padding:14px 0; border-top:1px solid rgba(150,160,220,.1); border-bottom:1px solid rgba(150,160,220,.1);"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d6494; padding-top:3px; min-width:24px;">05</span><div><div style="font-size:14.5px; color:#e4e7f5; font-weight:500;"><span data-vi>Nhiếp ảnh &amp; hậu kỳ</span><span data-en style="display:none">Photography &amp; post</span></div><div style="font-size:12.5px; color:#7b81a6; margin-top:2px;"><span data-vi>Chụp sản phẩm · Chỉnh màu</span><span data-en style="display:none">Product shoot · Colour grade</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 GROWTH & OPERATIONS -->
+  <section id="growth" class="growth-section" data-screen-label="Growth & Operations">
+    <div class="growth-intro" data-reveal>
+      <div>
+        <div class="growth-kicker">01 — GROWTH &amp; OPERATIONS</div>
+        <h2><span data-vi>Vận hành có hệ thống.<br><em>Ads có thước đo.</em></span><span data-en style="display:none">Structured operations.<br><em>Ads with clear metrics.</em></span></h2>
+      </div>
+      <p><span data-vi>Tôi kết nối thiết kế, quy trình và dữ liệu để một chiến dịch đi được từ brief đến triển khai và báo cáo. Các bảng dưới đây cho thấy hiệu suất Shopee Ads, Meta Ads và cách tôi tổ chức công việc phía sau.</span><span data-en style="display:none">I connect design, process and data to move a campaign from brief to launch and reporting. Below are Shopee and Meta Ads snapshots alongside the operating system behind the work.</span></p>
+    </div>
+
+    <div class="growth-jump" aria-label="Growth and Operations sections">
+      <a href="#growth-shopee"><span data-vi>01 / Hiệu suất Shopee Ads</span><span data-en style="display:none">01 / Shopee Ads performance</span></a>
+      <a href="#growth-ads"><span data-vi>02 / Hiệu suất Meta Ads</span><span data-en style="display:none">02 / Meta Ads performance</span></a>
+      <a href="#growth-ops"><span data-vi>03 / Hệ thống vận hành</span><span data-en style="display:none">03 / Operations system</span></a>
+    </div>
+
+    <article id="growth-shopee" class="growth-shopee" data-reveal>
+      <div class="growth-shopee-head">
+        <div>
+          <div class="growth-label">SHOPEE ADS · COMMERCE PERFORMANCE</div>
+          <h3><span data-vi>Hiệu quả quảng cáo gắn với chuyển đổi.</span><span data-en style="display:none">Ad performance tied to conversion.</span></h3>
+          <p><span data-vi>Một lát cắt từ chiến dịch Dịch vụ Hiển thị. Chỉ công bố tỷ lệ hiệu quả đã làm rộng thành khoảng; không hiển thị shop, sản phẩm, ngân sách hay doanh thu gốc.</span><span data-en style="display:none">One Display Ads campaign snapshot. Performance ratios are shown as broad ranges, with the shop, products, budget and original sales figures withheld.</span></p>
+        </div>
+        <div class="growth-shopee-stamp"><span data-vi>DỮ LIỆU BÁO CÁO 2026<br>ĐÃ ẨN CHI TIẾT VẬN HÀNH</span><span data-en style="display:none">2026 REPORT DATA<br>OPERATING DETAILS WITHHELD</span></div>
+      </div>
+      <div class="growth-shopee-body">
+        <div class="growth-shopee-main">
+          <div class="growth-shopee-eyebrow"><span data-vi>DOANH THU GHI NHẬN / CHI PHÍ ADS</span><span data-en style="display:none">ATTRIBUTED SALES / AD SPEND</span></div>
+          <div class="growth-shopee-roas">9–11<span>×</span></div>
+          <div class="growth-shopee-roas-label"><span data-vi>ROAS theo báo cáo Shopee</span><span data-en style="display:none">Shopee-reported ROAS</span></div>
+          <div class="growth-shopee-scale" aria-hidden="true"><span></span></div>
+          <div class="growth-shopee-scale-label"><span data-vi>1× chi phí quảng cáo</span><span data-en style="display:none">1× ad spend</span><span data-vi>9–11× doanh thu ghi nhận</span><span data-en style="display:none">9–11× attributed sales</span></div>
+        </div>
+        <div class="growth-shopee-kpis">
+          <div class="growth-shopee-kpi"><div class="growth-label">CTR</div><strong>3–4%</strong><span data-vi>Tỷ lệ nhấp từ lượt hiển thị</span><span data-en style="display:none">Clicks per impression</span></div>
+          <div class="growth-shopee-kpi"><div class="growth-label">CVR</div><strong>5–7%</strong><span data-vi>Chuyển đổi từ lượt nhấp</span><span data-en style="display:none">Conversions per click</span></div>
+          <div class="growth-shopee-kpi growth-shopee-kpi-wide"><div class="growth-label">DIRECT ROAS</div><strong>8–10×</strong><span data-vi>Doanh thu trực tiếp / chi phí Ads</span><span data-en style="display:none">Direct attributed sales / ad spend</span></div>
+        </div>
+      </div>
+      <div class="growth-note"><span data-vi>Nguồn: bản xuất Shopee Ads 2026 do tôi vận hành. Đây là kết quả của một chiến dịch đại diện, không phải tổng toàn shop. ROAS là doanh thu được nền tảng ghi nhận chia cho chi phí quảng cáo; không đồng nghĩa lợi nhuận. Các chỉ số công khai là khoảng làm rộng từ báo cáo gốc.</span><span data-en style="display:none">Source: a 2026 Shopee Ads export from my work. This is one representative campaign, not a shop-wide total. ROAS is platform-attributed sales divided by ad spend and does not mean profit. Public figures are broad ranges derived from the original report.</span></div>
+    </article>
+
+    <article id="growth-ads" class="growth-dashboard" data-reveal>
+      <div class="growth-dashboard-head">
+        <div>
+          <div class="growth-label">META ADS · CAMPAIGN SNAPSHOT</div>
+          <h3><span data-vi>Đo đúng kết quả của từng mục tiêu.</span><span data-en style="display:none">Measure each objective on its own terms.</span></h3>
+        </div>
+        <div class="growth-source-badge"><span data-vi>TỪ BÁO CÁO THẬT · ĐÃ ẨN SỐ GỐC<br>Số liệu làm rộng theo khoảng / chỉ số 100</span><span data-en style="display:none">DERIVED FROM ACTUAL REPORTS<br>Figures shown as ranges / base-100 indices</span></div>
+      </div>
+
+      <div class="growth-dashboard-body">
+        <div class="growth-case">
+          <div class="growth-label"><span data-vi>MỤC TIÊU 01 · TẠO HỘI THOẠI</span><span data-en style="display:none">OBJECTIVE 01 · START CONVERSATIONS</span></div>
+          <h4 class="growth-case-title"><span data-vi>Từ quảng cáo đến cuộc trò chuyện</span><span data-en style="display:none">From ad delivery to conversation</span></h4>
+          <p class="growth-case-desc"><span data-vi>Chỉ số kết quả là cuộc trò chuyện mới bắt đầu trên Meta. Chi phí được đọc theo mỗi kết quả, không trộn với mục tiêu xem video.</span><span data-en style="display:none">The result is a new conversation started on Meta. Cost is measured per result and kept separate from video-view objectives.</span></p>
+          <div class="growth-metrics">
+            <div class="growth-metric"><strong>30–50</strong><span data-vi>Cuộc trò chuyện bắt đầu</span><span data-en style="display:none">Conversations started</span></div>
+            <div class="growth-metric"><strong>15–25K</strong><span data-vi>Chi phí / cuộc trò chuyện (VND)</span><span data-en style="display:none">Cost / conversation (VND)</span></div>
+            <div class="growth-metric"><strong>5–10k</strong><span data-vi>Người tiếp cận</span><span data-en style="display:none">People reached</span></div>
+            <div class="growth-metric"><strong>10–20k</strong><span data-vi>Lượt hiển thị</span><span data-en style="display:none">Impressions</span></div>
+          </div>
+        </div>
+
+        <div class="growth-case">
+          <div class="growth-label"><span data-vi>MỤC TIÊU 02 · XEM VIDEO</span><span data-en style="display:none">OBJECTIVE 02 · VIDEO VIEWS</span></div>
+          <h4 class="growth-case-title"><span data-vi>Đối chiếu hai chiến dịch cùng mục tiêu</span><span data-en style="display:none">Compare two campaigns with one objective</span></h4>
+          <p class="growth-case-desc"><span data-vi>Chiến dịch tham chiếu = 100. Giá trị dưới đây giữ nguyên tỷ lệ từ export; chi phí/kết quả thấp hơn là tốt hơn.</span><span data-en style="display:none">Reference campaign = 100. These indices preserve the ratios in the export; lower cost per result is better.</span></p>
+          <div class="growth-index" aria-label="Indexed campaign comparison">
+            <div>
+              <div class="growth-label" style="margin-bottom:13px;"><span data-vi>LƯỢT XEM LIÊN TỤC TỐI THIỂU 2 GIÂY</span><span data-en style="display:none">CONTINUOUS 2-SECOND VIDEO VIEWS</span></div>
+              <div class="growth-index-row"><div><span class="growth-index-name"><span data-vi>Tham chiếu</span><span data-en style="display:none">Reference</span></span><span class="growth-index-bar"><span class="growth-index-fill" style="width:91%;background:#586184;"></span></span></div><b>100</b></div>
+              <div class="growth-index-row"><div><span class="growth-index-name"><span data-vi>Chiến dịch đối chiếu</span><span data-en style="display:none">Compared campaign</span></span><span class="growth-index-bar"><span class="growth-index-fill" style="width:92%;"></span></span></div><b>101</b></div>
+            </div>
+            <div>
+              <div class="growth-label" style="margin-bottom:13px;"><span data-vi>CHI PHÍ TRÊN MỖI KẾT QUẢ</span><span data-en style="display:none">COST PER RESULT</span></div>
+              <div class="growth-index-row"><div><span class="growth-index-name"><span data-vi>Tham chiếu</span><span data-en style="display:none">Reference</span></span><span class="growth-index-bar"><span class="growth-index-fill" style="width:91%;background:#586184;"></span></span></div><b>100</b></div>
+              <div class="growth-index-row"><div><span class="growth-index-name"><span data-vi>Chiến dịch đối chiếu</span><span data-en style="display:none">Compared campaign</span></span><span class="growth-index-bar"><span class="growth-index-fill" style="width:89%;"></span></span></div><b>98</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="growth-note"><span data-vi>Nguồn: bản xuất Meta Ads 2026 trong hồ sơ làm việc. Các khoảng được làm rộng và chỉ số đã chuẩn hoá để không lộ giá trị chính xác. Hai chiến dịch video chỉ được đối chiếu, không được trình bày như thử nghiệm A/B có kiểm soát. Báo cáo này không chứa doanh thu, đơn hàng hay ROAS.</span><span data-en style="display:none">Source: a 2026 Meta Ads export in the work archive. Ranges are broadened and indices normalized to withhold exact values. The two video campaigns are a comparison, not a controlled A/B test. This report contains no revenue, orders or ROAS.</span></div>
+    </article>
+
+    <article id="growth-ops" class="growth-ops" data-reveal>
+      <div>
+        <div class="growth-label">OPERATIONS · FROM BRIEF TO REPORT</div>
+        <h3><span data-vi>Hệ thống giúp đội ngũ chạy cùng một nhịp.</span><span data-en style="display:none">A system that keeps the team moving together.</span></h3>
+        <p><span data-vi>Trong vai trò quản lý marketing và vận hành, tôi nối các đầu mối sản xuất, kinh doanh, thiết kế và kênh bán. Mỗi giai đoạn cần một người phụ trách, đầu ra rõ và điểm kiểm tra trước khi chuyển bước.</span><span data-en style="display:none">In marketing and operations leadership roles, I connect production, sales, design and channels. Each phase has an owner, a clear output and a review point before handoff.</span></p>
+      </div>
+      <div class="growth-process" aria-label="Campaign operating workflow">
+        <div class="growth-step"><b>01 / BRIEF</b><strong><span data-vi>Nhận yêu cầu</span><span data-en style="display:none">Define brief</span></strong><span data-vi>Mục tiêu, người dùng, thời hạn.</span><span data-en style="display:none">Goal, audience, deadline.</span></div>
+        <div class="growth-step"><b>02 / PLAN</b><strong><span data-vi>Ưu tiên nguồn lực</span><span data-en style="display:none">Set priorities</span></strong><span data-vi>Kế hoạch, ngân sách, người phụ trách.</span><span data-en style="display:none">Plan, budget, owners.</span></div>
+        <div class="growth-step"><b>03 / MAKE</b><strong><span data-vi>Sản xuất tài sản</span><span data-en style="display:none">Produce assets</span></strong><span data-vi>Nội dung, hình ảnh, video, trang đích.</span><span data-en style="display:none">Copy, visual, video, landing page.</span></div>
+        <div class="growth-step"><b>04 / LAUNCH</b><strong><span data-vi>Duyệt &amp; triển khai</span><span data-en style="display:none">Review &amp; launch</span></strong><span data-vi>Kiểm tra chất lượng và bàn giao.</span><span data-en style="display:none">Quality check and handoff.</span></div>
+        <div class="growth-step"><b>05 / REVIEW</b><strong><span data-vi>Đo &amp; điều chỉnh</span><span data-en style="display:none">Measure &amp; refine</span></strong><span data-vi>Báo cáo tuần, quyết định tiếp theo.</span><span data-en style="display:none">Weekly report, next decision.</span></div>
+      </div>
+    </article>
+
+    <div class="growth-proof" data-reveal>
+      <div><strong>SOP &amp; handoff</strong><span data-vi>Chuẩn hoá luồng yêu cầu → thiết kế → duyệt → sản xuất → giao hàng.</span><span data-en style="display:none">Standardize request → design → approval → production → delivery.</span></div>
+      <div><strong>4DX weekly rhythm</strong><span data-vi>Biến chỉ số dẫn và bảng điểm thành quyết định điều chỉnh mỗi tuần.</span><span data-en style="display:none">Use lead measures and scoreboards to guide weekly decisions.</span></div>
+      <div><strong>Cross-team delivery</strong><span data-vi>Giữ tiến độ và chất lượng giữa marketing, kinh doanh, sản xuất và nhà cung cấp.</span><span data-en style="display:none">Coordinate timing and quality across marketing, sales, production and vendors.</span></div>
+    </div>
+
+    <div class="growth-cta" data-reveal>
+      <p><span data-vi>Muốn xem toàn bộ kinh nghiệm và vai trò của tôi?</span><span data-en style="display:none">Want the full work history and scope of my roles?</span></p>
+      <a href="assets/truong-phan-resume-vi.pdf" data-vi download>Tải CV tiếng Việt ↗</a>
+      <a href="assets/truong-phan-resume-en.pdf" data-en style="display:none" download>Download English CV ↗</a>
+    </div>
+  </section>
+  <!-- 02 BILLBOARDS + 3D STAGE -->
+  <section id="work" data-screen-label="Billboards" style="position:relative; z-index:2; padding:clamp(50px,7vw,90px) clamp(20px,5vw,64px) clamp(70px,9vw,120px); max-width:1440px; margin:0 auto;">
+    <div data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1); display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:34px;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.24em; color:#6f76a0; margin-bottom:14px;">02 — OOH</div>
+        <h2 style="font-family:Sora,sans-serif; font-weight:700; font-size:clamp(34px,5vw,64px); letter-spacing:-.03em; color:#f3f5fe; margin:0;"><span data-vi>Biển quảng cáo</span><span data-en style="display:none">Billboards</span></h2>
+      </div>
+      <p style="max-width:40ch; font-size:14.5px; line-height:1.7; color:#8f95b6; margin:0;"><span data-vi>Biển quảng cáo là nơi thiết kế phải hoạt động ở khoảng cách xa và tốc độ cao — thông điệp đọc được trong vài giây, sản phẩm nổi bật giữa khung cảnh thật.</span><span data-en style="display:none">A billboard is where design must work at distance and speed — the message read in seconds, the product standing out against a real backdrop.</span></p>
+    </div>
+
+    <div data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1); max-width:820px; margin:0 0 26px;">
+      <p style="font-size:16px; line-height:1.8; color:#aab0d0; margin:0 0 20px;"><span data-vi>Mỗi bố cục được xây dựng cho một chiến dịch cụ thể, cân bằng giữa nhận diện thương hiệu và một lời kêu gọi rõ ràng. Bên dưới, hãy đặt thử một thiết kế vào đúng nơi nó sẽ sống: <span style="color:#c9cffb;">kéo để xoay</span> tấm biển và chuyển giữa khung cảnh đồng quê và thành phố.</span><span data-en style="display:none">Each layout is built for a specific campaign, balancing brand recognition with a single clear call to action. Below, place a design where it will actually live: <span style="color:#c9cffb;">drag to rotate</span> the billboard and switch between a roadside and a city setting.</span></p>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.06em;">
+        <span style="padding:7px 13px; border-radius:999px; border:1px solid rgba(150,160,220,.18); color:#9aa0c4;"><span data-vi>Vai trò</span><span data-en style="display:none">Role</span>: Art Direction · Layout · Retouch</span>
+        <span style="padding:7px 13px; border-radius:999px; border:1px solid rgba(150,160,220,.18); color:#9aa0c4;"><span data-vi>Ngành</span><span data-en style="display:none">Sector</span>: FMCG · <span data-vi>Nông nghiệp</span><span data-en style="display:none">Agriculture</span></span>
+        <span style="padding:7px 13px; border-radius:999px; border:1px solid rgba(150,160,220,.18); color:#9aa0c4;"><span data-vi>Khổ</span><span data-en style="display:none">Format</span>: OOH</span>
+      </div>
+    </div>
+
+    <!-- 3D STAGE -->
+    <div ref="{{ stageRef }}" data-reveal style="opacity:0; transform:translateY(34px); transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1); position:relative; height:clamp(400px,52vw,600px); border-radius:20px; overflow:hidden; border:1px solid rgba(150,160,220,.14); cursor:grab; touch-action:pan-y; perspective:1500px; background:#0a1020;">
+
+      <!-- ROADSIDE scene -->
+      <div ref="{{ roadRef }}" style="position:absolute; inset:0;">
+        <div style="position:absolute; inset:0; background:linear-gradient(180deg,#1a2c52 0%,#39568a 42%,#7a89a8 66%,#c8b58e 74%,#9fae7a 80%,#5c7a46 100%);"></div>
+        <div style="position:absolute; left:0; right:0; top:60%; height:8%; background:radial-gradient(60% 100% at 70% 50%, rgba(255,214,150,.55), transparent 70%);"></div>
+        <div style="position:absolute; left:0; right:0; bottom:0; height:38%; background:linear-gradient(180deg,#6f8a4e,#3e5a30 60%,#2c421f); box-shadow:0 -1px 0 rgba(255,255,255,.06);"></div>
+        <div style="position:absolute; left:0; right:0; bottom:0; height:26%; background:repeating-linear-gradient(92deg, rgba(30,50,20,.35) 0 3px, transparent 3px 11px); opacity:.5;"></div>
+        <div style="position:absolute; left:6%; bottom:30%; width:60px; height:70px; background:radial-gradient(circle at 50% 60%, #2f4a26, #1c3016); border-radius:50% 50% 46% 46%; filter:blur(.4px); opacity:.85;"></div>
+        <div style="position:absolute; right:9%; bottom:31%; width:44px; height:54px; background:radial-gradient(circle at 50% 60%, #2f4a26, #1c3016); border-radius:50% 50% 46% 46%; opacity:.75;"></div>
+      </div>
+
+      <!-- CITY scene -->
+      <div ref="{{ cityRef }}" style="position:absolute; inset:0; display:none;">
+        <div style="position:absolute; inset:0; background:linear-gradient(180deg,#0a1330 0%,#14224f 45%,#3a2f5e 78%,#5a3b63 100%);"></div>
+        <div style="position:absolute; left:0; right:0; top:0; height:70%; background:radial-gradient(50% 60% at 78% 20%, rgba(120,140,255,.22), transparent 70%);"></div>
+        <div style="position:absolute; left:0; right:0; bottom:0; height:56%; display:flex; align-items:flex-end; gap:2px; padding:0 2px; filter:brightness(.9);">
+          <div style="flex:1; height:62%; background:linear-gradient(180deg,#141a34,#0b1020); background-image:repeating-linear-gradient(90deg,transparent 0 8px,rgba(255,220,150,.12) 8px 12px),repeating-linear-gradient(180deg,transparent 0 10px,rgba(255,220,150,.1) 10px 15px); background-blend-mode:screen;"></div>
+          <div style="flex:1; height:88%; background:linear-gradient(180deg,#181f3c,#0b1020); background-image:repeating-linear-gradient(90deg,transparent 0 9px,rgba(150,200,255,.14) 9px 13px),repeating-linear-gradient(180deg,transparent 0 11px,rgba(150,200,255,.12) 11px 17px); background-blend-mode:screen;"></div>
+          <div style="flex:1; height:50%; background:linear-gradient(180deg,#131933,#0b1020); background-image:repeating-linear-gradient(90deg,transparent 0 7px,rgba(255,220,150,.12) 7px 11px),repeating-linear-gradient(180deg,transparent 0 9px,rgba(255,220,150,.1) 9px 14px); background-blend-mode:screen;"></div>
+          <div style="flex:1.3; height:100%; background:linear-gradient(180deg,#1b2246,#0b1020); background-image:repeating-linear-gradient(90deg,transparent 0 10px,rgba(150,200,255,.14) 10px 14px),repeating-linear-gradient(180deg,transparent 0 12px,rgba(150,200,255,.12) 12px 18px); background-blend-mode:screen;"></div>
+          <div style="flex:1; height:72%; background:linear-gradient(180deg,#161d3a,#0b1020); background-image:repeating-linear-gradient(90deg,transparent 0 8px,rgba(255,220,150,.12) 8px 12px),repeating-linear-gradient(180deg,transparent 0 10px,rgba(255,220,150,.1) 10px 15px); background-blend-mode:screen;"></div>
+          <div style="flex:.9; height:58%; background:linear-gradient(180deg,#141a34,#0b1020); background-image:repeating-linear-gradient(90deg,transparent 0 9px,rgba(150,200,255,.13) 9px 13px),repeating-linear-gradient(180deg,transparent 0 11px,rgba(150,200,255,.11) 11px 16px); background-blend-mode:screen;"></div>
+        </div>
+      </div>
+
+      <!-- ground shadow -->
+      <div style="position:absolute; left:50%; bottom:12%; width:40%; height:40px; transform:translateX(-50%); background:radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.5), transparent 70%); filter:blur(6px);"></div>
+
+      <!-- BILLBOARD RIG -->
+      <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-56%); transform-style:preserve-3d; perspective:1500px;">
+        <div ref="{{ rigRef }}" style="transform-style:preserve-3d; will-change:transform;">
+          <!-- panel -->
+          <div style="position:relative; width:clamp(300px,44vw,560px); aspect-ratio:1418/709; border-radius:8px; padding:10px; background:linear-gradient(180deg,#20263e,#141930); border:1px solid rgba(160,175,240,.25); box-shadow:0 0 0 3px #0c1122, 0 24px 60px rgba(0,0,0,.55), 0 0 60px rgba(90,120,255,.22); transform-style:preserve-3d;">
+            <div style="position:relative; width:100%; height:100%; border-radius:4px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(0,0,0,.3);">
+              <img ref="{{ panelImgRef }}" src="assets/bb-cobay-cafe.png" alt="" style="width:100%; height:100%; object-fit:cover; display:block;">
+              <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(255,255,255,.08),transparent 30%,rgba(0,0,0,.12));"></div>
+            </div>
+            <!-- floodlights -->
+            <div style="position:absolute; left:14%; top:-16px; width:34px; height:14px; background:#2b3350; border-radius:4px 4px 0 0; box-shadow:0 8px 26px rgba(255,236,180,.35);"></div>
+            <div style="position:absolute; left:44%; top:-16px; width:34px; height:14px; background:#2b3350; border-radius:4px 4px 0 0; box-shadow:0 8px 26px rgba(255,236,180,.35);"></div>
+            <div style="position:absolute; right:14%; top:-16px; width:34px; height:14px; background:#2b3350; border-radius:4px 4px 0 0; box-shadow:0 8px 26px rgba(255,236,180,.35);"></div>
+          </div>
+          <!-- legs -->
+          <div style="position:relative; height:clamp(90px,15vw,150px); margin-top:-2px;">
+            <div style="position:absolute; left:24%; top:0; width:12px; height:100%; background:linear-gradient(90deg,#40496e,#232a44 60%,#161c30); border-radius:2px; box-shadow:2px 0 6px rgba(0,0,0,.4);"></div>
+            <div style="position:absolute; right:24%; top:0; width:12px; height:100%; background:linear-gradient(90deg,#40496e,#232a44 60%,#161c30); border-radius:2px; box-shadow:2px 0 6px rgba(0,0,0,.4);"></div>
+            <div style="position:absolute; left:24%; right:24%; top:26%; height:8px; background:#2a3150; transform:skewX(-32deg); opacity:.8;"></div>
+            <div style="position:absolute; left:24%; right:24%; top:58%; height:8px; background:#2a3150; transform:skewX(32deg); opacity:.8;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HUD -->
+      <div style="position:absolute; left:18px; bottom:16px; display:flex; align-items:center; gap:10px; padding:9px 14px; border-radius:999px; background:rgba(8,11,22,.6); backdrop-filter:blur(8px); border:1px solid rgba(150,160,220,.16); pointer-events:none;">
+        <span style="width:20px; height:20px; border:1.5px solid #b5abfc; border-radius:50%; display:grid; place-items:center; font-size:11px; color:#b5abfc;">↻</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; color:#c4c9ea;"><span data-vi>Kéo để xoay</span><span data-en style="display:none">Drag to rotate</span></span>
+      </div>
+
+      <!-- env toggle -->
+      <div ref="{{ envRef }}" style="position:absolute; right:18px; top:18px; display:flex; gap:0; border:1px solid rgba(150,160,220,.2); border-radius:999px; overflow:hidden; background:rgba(8,11,22,.55); backdrop-filter:blur(8px); font-family:'JetBrains Mono',monospace; font-size:11px;">
+        <button data-env="road" style="padding:8px 14px; border:0; background:#5d5294; color:#f5f4ff; cursor:pointer;"><span data-vi>Đồng quê</span><span data-en style="display:none">Roadside</span></button>
+        <button data-env="city" style="padding:8px 14px; border:0; background:transparent; color:#9297b3; cursor:pointer;"><span data-vi>Thành phố</span><span data-en style="display:none">City</span></button>
+      </div>
+    </div>
+
+    <!-- design selector thumbnails -->
+    <div ref="{{ bbSelRef }}" style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:18px;">
+      <button data-bb data-img="assets/bb-cobay-cafe.png" data-name="Cò Bay" data-tag="Phân bón NPK · Cà phê" class="bbsel" style="text-align:left; padding:0; border:1px solid rgba(181,171,252,.5); border-radius:12px; overflow:hidden; background:#0d132a; cursor:pointer;">
+        <img src="assets/bb-cobay-cafe.png" alt="Cò Bay billboard" style="width:100%; aspect-ratio:2/1; object-fit:cover; display:block;">
+      </button>
+      <button data-bb data-img="assets/bb-zeo.png" data-name="ZeO" data-tag="Nước lau sàn · Sạch khuẩn" class="bbsel" style="text-align:left; padding:0; border:1px solid rgba(150,160,220,.16); border-radius:12px; overflow:hidden; background:#0d132a; cursor:pointer;">
+        <img src="assets/bb-zeo.png" alt="ZeO billboard" style="width:100%; aspect-ratio:2/1; object-fit:cover; display:block;">
+      </button>
+      <button data-bb data-img="assets/bb-oplus.png" data-name="Oplus" data-tag="Nước giặt xả · 2in1" class="bbsel" style="text-align:left; padding:0; border:1px solid rgba(150,160,220,.16); border-radius:12px; overflow:hidden; background:#0d132a; cursor:pointer;">
+        <img src="assets/bb-oplus.png" alt="Oplus billboard" style="width:100%; aspect-ratio:2/1; object-fit:cover; display:block;">
+      </button>
+      <button data-bb data-img="assets/bb-pano.png" data-name="PANO" data-tag="Nước giặt · Nâng niu cảm xúc" class="bbsel" style="text-align:left; padding:0; border:1px solid rgba(150,160,220,.16); border-radius:12px; overflow:hidden; background:#0d132a; cursor:pointer;">
+        <img src="assets/bb-pano.png" alt="PANO billboard" style="width:100%; aspect-ratio:2/1; object-fit:cover; display:block;">
+      </button>
+    </div>
+
+    <!-- billboard gallery -->
+    <div data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1); display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin:64px 0 22px; border-top:1px solid rgba(150,160,220,.1); padding-top:26px;">
+      <h3 style="font-family:Sora,sans-serif; font-weight:600; font-size:clamp(20px,2.4vw,28px); letter-spacing:-.02em; color:#e4e7f5; margin:0;"><span data-vi>Thư viện chiến dịch</span><span data-en style="display:none">Campaign archive</span></h3>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; color:#6f76a0;">2024 — 2026</span>
+    </div>
+    <div style="columns:2; column-gap:18px;">
+      <figure data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); break-inside:avoid; margin:0 0 18px; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12);"><img src="assets/bb-pano.png" loading="lazy" style="width:100%; display:block;" alt="Billboard PANO"><figcaption style="padding:11px 14px; background:#0b1024; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em; color:#8990b5;">PANO · <span data-vi>Nước giặt hương nước hoa</span><span data-en style="display:none">Floral laundry detergent</span></figcaption></figure>
+      <figure data-reveal data-delay="80" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); break-inside:avoid; margin:0 0 18px; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12);"><img src="assets/bb-lua.png" loading="lazy" style="width:100%; display:block;" alt="Billboard lúa"><figcaption style="padding:11px 14px; background:#0b1024; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em; color:#8990b5;">Cò Bay · <span data-vi>Cò Vàng — đón đòng lúa</span><span data-en style="display:none">Rice-stage fertilizer</span></figcaption></figure>
+      <figure data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); break-inside:avoid; margin:0 0 18px; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12);"><img src="assets/bb-oplus.png" loading="lazy" style="width:100%; display:block;" alt="Billboard Oplus"><figcaption style="padding:11px 14px; background:#0b1024; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em; color:#8990b5;">Oplus 2in1 · <span data-vi>Thơm lâu, mềm vải</span><span data-en style="display:none">Long-lasting scent softener</span></figcaption></figure>
+      <figure data-reveal data-delay="80" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); break-inside:avoid; margin:0 0 18px; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12);"><img src="assets/bb-saurieng.png" loading="lazy" style="width:100%; display:block;" alt="Billboard sầu riêng"><figcaption style="padding:11px 14px; background:#0b1024; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em; color:#8990b5;">Cò Bay · <span data-vi>Chuyên sầu riêng</span><span data-en style="display:none">Durian-specialist fertilizer</span></figcaption></figure>
+      <figure data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); break-inside:avoid; margin:0 0 18px; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12);"><img src="assets/bb-zeo.png" loading="lazy" style="width:100%; display:block;" alt="Billboard ZeO"><figcaption style="padding:11px 14px; background:#0b1024; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em; color:#8990b5;">ZeO · <span data-vi>Nước lau sàn sạch khuẩn</span><span data-en style="display:none">Antibacterial floor cleaner</span></figcaption></figure>
+      <figure data-reveal data-delay="80" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); break-inside:avoid; margin:0 0 18px; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12);"><img src="assets/bb-cobay-cafe.png" loading="lazy" style="width:100%; display:block;" alt="Billboard Cò Bay"><figcaption style="padding:11px 14px; background:#0b1024; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em; color:#8990b5;">Cò Bay · <span data-vi>Phân bón cho cà phê</span><span data-en style="display:none">Fertilizer for coffee</span></figcaption></figure>
+      <figure data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); break-inside:avoid; margin:0 0 18px; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12);"><img src="assets/bb-biochar.png" loading="lazy" style="width:100%; display:block;" alt="Billboard Biochar"><figcaption style="padding:11px 14px; background:#0b1024; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em; color:#8990b5;">Biochar · <span data-vi>Phân bón hữu cơ</span><span data-en style="display:none">Organic fertilizer</span></figcaption></figure>
+      <figure data-reveal data-delay="80" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); break-inside:avoid; margin:0 0 18px; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12);"><img src="assets/bb-pb-lua.png" loading="lazy" style="width:100%; display:block;" alt="Billboard Lúa PB"><figcaption style="padding:11px 14px; background:#0b1024; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em; color:#8990b5;">Cò Bay · <span data-vi>Chuyên bón thúc cho lúa</span><span data-en style="display:none">Rice top-dressing fertilizer</span></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 02 PACKAGING -->
+  <section id="packaging" data-screen-label="Packaging" style="position:relative; z-index:2; padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px); background:linear-gradient(180deg,rgba(12,17,36,0),rgba(14,20,44,.6),rgba(12,17,36,0));">
+    <div style="max-width:1440px; margin:0 auto;">
+      <div data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1); margin-bottom:44px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.24em; color:#6f76a0; margin-bottom:14px;">03 — PACKAGING</div>
+        <h2 style="font-family:Sora,sans-serif; font-weight:700; font-size:clamp(34px,5vw,64px); letter-spacing:-.03em; color:#f3f5fe; margin:0;"><span data-vi>Bao bì &amp; nhãn</span><span data-en style="display:none">Packaging &amp; labels</span></h2>
+        <p style="max-width:60ch; font-size:16px; line-height:1.8; color:#aab0d0; margin:20px 0 0;"><span data-vi>Trên kệ hàng, bao bì là “gương mặt” đầu tiên của sản phẩm. Tôi thiết kế nhãn và bao bì cho nhiều dòng sản phẩm — từ chai nước giặt Oplus, túi nước giặt PANO đến can ZeO — giữ tính hệ thống giữa các biến thể màu, dung tích và hương, đồng thời tuân thủ yêu cầu in ấn và quy cách đóng gói.</span><span data-en style="display:none">On the shelf, packaging is a product's first face. I design labels and packaging across many lines — from Oplus detergent bottles and PANO pouches to ZeO cans — holding a consistent system across colour variants, volumes and scents while respecting print and packaging specs.</span></p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:18px;">
+        <div data-tilt data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); grid-column:span 5; border-radius:18px; padding:30px; background:radial-gradient(120% 90% at 30% 0%, #16264f 0%, #0b1024 60%, #0a0f22 100%); border:1px solid rgba(150,160,220,.14); display:flex; align-items:center; justify-content:center; min-height:360px;">
+          <img src="assets/pk-oplus-xanh.png" loading="lazy" alt="Oplus xanh" style="max-height:340px; width:auto; filter:drop-shadow(0 30px 50px rgba(0,0,0,.5)); animation:floaty 6s ease-in-out infinite;">
+        </div>
+        <div data-reveal data-delay="80" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); grid-column:span 7; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+          <div data-tilt style="border-radius:18px; padding:24px; background:linear-gradient(160deg,#1a1440,#0c0f26); border:1px solid rgba(150,160,220,.14); display:grid; place-items:center;"><img src="assets/pk-oplus-tim.png" loading="lazy" alt="Oplus tím" style="max-height:230px; filter:drop-shadow(0 24px 40px rgba(0,0,0,.5));"></div>
+          <div data-tilt style="border-radius:18px; padding:24px; background:linear-gradient(160deg,#3a1420,#0c0f26); border:1px solid rgba(150,160,220,.14); display:grid; place-items:center;"><img src="assets/pk-oplus-do.png" loading="lazy" alt="Oplus đỏ" style="max-height:230px; filter:drop-shadow(0 24px 40px rgba(0,0,0,.5));"></div>
+          <div data-tilt style="grid-column:span 2; border-radius:18px; padding:24px; background:linear-gradient(120deg,#101b3f,#0c0f26); border:1px solid rgba(150,160,220,.14); display:flex; align-items:center; justify-content:space-around;"><img src="assets/pk-pano-tim.png" loading="lazy" alt="PANO tím" style="max-height:180px; filter:drop-shadow(0 20px 34px rgba(0,0,0,.5));"><img src="assets/pk-pano-xanh.png" loading="lazy" alt="PANO xanh" style="max-height:180px; filter:drop-shadow(0 20px 34px rgba(0,0,0,.5));"></div>
+        </div>
+        <div data-tilt data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); grid-column:span 4; border-radius:18px; padding:24px; background:linear-gradient(160deg,#12224a,#0c0f26); border:1px solid rgba(150,160,220,.14); display:grid; place-items:center; min-height:300px;"><img src="assets/pk-zeo.png" loading="lazy" alt="ZeO bag" style="max-height:260px; filter:drop-shadow(0 24px 40px rgba(0,0,0,.5));"></div>
+        <div data-tilt data-reveal data-delay="80" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); grid-column:span 4; border-radius:18px; padding:24px; background:linear-gradient(160deg,#101b3f,#0c0f26); border:1px solid rgba(150,160,220,.14); display:grid; place-items:center; min-height:300px;"><img src="assets/pk-oplus-9kg.png" loading="lazy" alt="Oplus 9kg" style="max-height:260px; filter:drop-shadow(0 24px 40px rgba(0,0,0,.5));"></div>
+        <div data-tilt data-reveal data-delay="160" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); grid-column:span 4; border-radius:18px; padding:24px; background:linear-gradient(160deg,#2a1440,#0c0f26); border:1px solid rgba(150,160,220,.14); display:grid; place-items:center; min-height:300px;"><img src="assets/pk-zeo-label.png" loading="lazy" alt="ZeO label" style="max-width:100%; max-height:260px; filter:drop-shadow(0 24px 40px rgba(0,0,0,.5));"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 BRAND -->
+  <section id="brand" data-screen-label="Brand" style="position:relative; z-index:2; padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px); max-width:1440px; margin:0 auto;">
+    <div data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1); margin-bottom:44px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.24em; color:#6f76a0; margin-bottom:14px;">04 — IDENTITY</div>
+      <h2 style="font-family:Sora,sans-serif; font-weight:700; font-size:clamp(34px,5vw,64px); letter-spacing:-.03em; color:#f3f5fe; margin:0;"><span data-vi>Nhận diện thương hiệu</span><span data-en style="display:none">Brand identity</span></h2>
+      <p style="max-width:60ch; font-size:16px; line-height:1.8; color:#aab0d0; margin:18px 0 0;"><span data-vi>Một thương hiệu bền vững bắt đầu từ một nền tảng rõ ràng. Với PANO và CFC, tôi xây dựng hệ thống nhận diện hoàn chỉnh — logo, bảng màu, kiểu chữ và quy chuẩn ứng dụng — để mọi ấn phẩm về sau đều nhất quán, dù do ai thực hiện.</span><span data-en style="display:none">A lasting brand starts from a clear foundation. For PANO and CFC I built complete identity systems — logo, palette, type and usage rules — so every future piece stays consistent, whoever produces it.</span></p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(12,1fr); grid-auto-rows:minmax(10px,auto); grid-auto-flow:dense; gap:18px;">
+      <figure data-morph style="opacity:1; grid-column:span 5; grid-row:span 2; margin:0; border-radius:16px; overflow:hidden; border:1px solid rgba(150,160,220,.14); background:#0b1024; position:relative; display:flex; align-items:center; justify-content:center; will-change:transform,border-radius;"><img src="assets/br-pano-cover.png" loading="lazy" alt="PANO guideline cover" style="width:100%; height:100%; object-fit:contain; display:block;"><figcaption style="position:absolute; left:16px; bottom:14px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.06em; color:#c9cffb;">PANO · <span data-vi>Cẩm nang thương hiệu</span><span data-en style="display:none">Brand guidelines</span></figcaption></figure>
+      <figure data-morph style="opacity:1; grid-column:span 7; margin:0; border-radius:16px; overflow:hidden; border:1px solid rgba(150,160,220,.14); will-change:transform,border-radius;"><img src="assets/br-pano-variants.png" loading="lazy" alt="PANO variants" style="width:100%; display:block;"></figure>
+      <figure data-morph style="opacity:1; grid-column:span 7; margin:0; border-radius:16px; overflow:hidden; border:1px solid rgba(150,160,220,.14); will-change:transform,border-radius;"><img src="assets/br-pano-palette.png" loading="lazy" alt="PANO palette" style="width:100%; display:block;"></figure>
+      <figure data-morph style="opacity:1; grid-column:span 6; margin:0; border-radius:16px; overflow:hidden; border:1px solid rgba(150,160,220,.14); will-change:transform,border-radius;"><img src="assets/br-pano-mockup.png" loading="lazy" alt="PANO mockup" style="width:100%; display:block;"></figure>
+      <figure data-morph style="opacity:1; grid-column:span 6; margin:0; border-radius:16px; overflow:hidden; border:1px solid rgba(150,160,220,.14); will-change:transform,border-radius;"><img src="assets/br-pano-font.png" loading="lazy" alt="PANO font" style="width:100%; display:block;"></figure>
+      <figure data-morph style="opacity:1; grid-column:span 6; margin:0; border-radius:16px; overflow:hidden; border:1px solid rgba(150,160,220,.14); background:#0b1024; will-change:transform,border-radius;"><img src="assets/br-cfc-1.png" loading="lazy" alt="CFC identity" style="width:100%; display:block;"></figure>
+      <figure data-morph style="opacity:1; grid-column:span 6; margin:0; border-radius:16px; overflow:hidden; border:1px solid rgba(150,160,220,.14); will-change:transform,border-radius;"><img src="assets/br-cfc-3.png" loading="lazy" alt="CFC identity" style="width:100%; display:block;"></figure>
+    </div>
+  </section>
+
+  <!-- 04 PHOTOGRAPHY -->
+  <section id="photo" data-screen-label="Photography" style="position:relative; z-index:2; padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px); max-width:1440px; margin:0 auto;">
+    <div data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1); margin-bottom:44px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.24em; color:#6f76a0; margin-bottom:14px;">05 — PHOTOGRAPHY</div>
+      <h2 style="font-family:Sora,sans-serif; font-weight:700; font-size:clamp(34px,5vw,64px); letter-spacing:-.03em; color:#f3f5fe; margin:0;"><span data-vi>Nhiếp ảnh &amp; hậu kỳ</span><span data-en style="display:none">Photography &amp; post</span></h2>
+      <p style="max-width:60ch; font-size:16px; line-height:1.8; color:#aab0d0; margin:20px 0 0;"><span data-vi>Kỹ năng chụp và hậu kỳ giúp tôi kiểm soát hình ảnh từ khâu bấm máy đến thành phẩm. Bộ ảnh dưới đây thực hiện trên máy cơ, chú trọng ánh sáng, bố cục và xử lý màu.</span><span data-en style="display:none">Shooting and post let me control the image from the shutter to the final file. The set below was shot on a manual camera, with an emphasis on light, composition and colour grading.</span></p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
+      <figure data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); margin:0; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12); aspect-ratio:1/1;"><img src="assets/ph-1.jpg" loading="lazy" alt="" style="width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.16,1,.3,1);" data-zoom></figure>
+      <figure data-reveal data-delay="70" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); margin:0; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12); aspect-ratio:1/1;"><img src="assets/ph-2.jpg" loading="lazy" alt="" style="width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.16,1,.3,1);" data-zoom></figure>
+      <figure data-reveal data-delay="140" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); margin:0; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12); aspect-ratio:1/1;"><img src="assets/ph-3.jpg" loading="lazy" alt="" style="width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.16,1,.3,1);" data-zoom></figure>
+      <figure data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); margin:0; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12); aspect-ratio:1/1;"><img src="assets/ph-4.jpg" loading="lazy" alt="" style="width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.16,1,.3,1);" data-zoom></figure>
+      <figure data-reveal data-delay="70" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); margin:0; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12); aspect-ratio:1/1;"><img src="assets/ph-5.jpg" loading="lazy" alt="" style="width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.16,1,.3,1);" data-zoom></figure>
+      <figure data-reveal data-delay="140" style="opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1); margin:0; border-radius:14px; overflow:hidden; border:1px solid rgba(150,160,220,.12); aspect-ratio:1/1;"><img src="assets/ph-6.jpg" loading="lazy" alt="" style="width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.16,1,.3,1);" data-zoom></figure>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact" data-screen-label="Contact" style="position:relative; z-index:2; padding:clamp(80px,11vw,150px) clamp(20px,5vw,64px) 60px; border-top:1px solid rgba(150,160,220,.1); background:radial-gradient(1000px 500px at 50% 120%, #1a2350, #080b16 70%);">
+    <div style="max-width:1100px; margin:0 auto; text-align:center;">
+      <div data-reveal style="opacity:0; transform:translateY(34px); transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.24em; color:#6f76a0; margin-bottom:22px;"><span data-vi>Cùng hợp tác</span><span data-en style="display:none">Let's work together</span></div>
+        <h2 style="font-family:Sora,sans-serif; font-weight:700; font-size:clamp(40px,7vw,86px); letter-spacing:-.03em; color:#f3f5fe; margin:0 0 24px; line-height:.95;">Trường Phan</h2>
+        <p style="max-width:52ch; margin:0 auto 34px; font-size:16.5px; line-height:1.8; color:#aab0d0;"><span data-vi>Cảm ơn bạn đã xem đến cuối. Nếu bạn đang tìm một người có thể vừa định hình ý tưởng vừa đưa nó đến thành phẩm, hãy kết nối.</span><span data-en style="display:none">Thank you for scrolling to the end. If you're looking for someone who can shape an idea and carry it all the way to a finished piece, let's talk.</span></p>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-bottom:40px;">
+          <a href="tel:0907006468" style="display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:999px; border:1px solid rgba(150,160,220,.25); color:#d3d7ee; font-size:14px;">📞 0907 006 468</a>
+          <a href="mailto:phanthanhtruonghcm@gmail.com" style="display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:999px; border:1px solid rgba(150,160,220,.25); color:#d3d7ee; font-size:14px;">Email</a>
+          <a href="https://www.facebook.com/phanthanhtruong.me" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:999px; border:1px solid rgba(150,160,220,.25); color:#d3d7ee; font-size:14px;">Facebook</a>
+          <a href="https://www.instagram.com/truongphanne/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:999px; border:1px solid rgba(150,160,220,.25); color:#d3d7ee; font-size:14px;">Instagram</a>
+          <span style="display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:999px; border:1px solid rgba(150,160,220,.12); color:#8f95b6; font-size:14px;">📍 Cần Thơ</span>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:28px; border-top:1px solid rgba(150,160,220,.08); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.08em; color:#5c6288;">
+        <span>© 2026 Trường Phan</span>
+        <span><span data-vi>Thiết kế · Vận hành · Performance Ads</span><span data-en style="display:none">Design · Operations · Performance Ads</span></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      rootRef: (el) => { this.rootEl = el; },
+      glowRef: (el) => { this.glowEl = el; },
+      portraitRef: (el) => { this.portraitEl = el; },
+      stageRef: (el) => { this.stageEl = el; },
+      rigRef: (el) => { this.rigEl = el; },
+      panelImgRef: (el) => { this.panelImg = el; },
+      roadRef: (el) => { this.roadEl = el; },
+      cityRef: (el) => { this.cityEl = el; },
+      envRef: (el) => { this.envEl = el; },
+      bbSelRef: (el) => { this.bbSelEl = el; },
+      langRef: (el) => { this.langEl = el; },
+    };
+  }
+
+  componentDidMount() {
+    this._cleanup = [];
+    requestAnimationFrame(() => this.init());
+  }
+
+  componentWillUnmount() {
+    if (this._raf) cancelAnimationFrame(this._raf);
+    (this._cleanup || []).forEach((fn) => fn());
+  }
+
+  on(target, ev, fn, opts) {
+    if (!target) return;
+    target.addEventListener(ev, fn, opts);
+    this._cleanup.push(() => target.removeEventListener(ev, fn, opts));
+  }
+
+  init() {
+    this.initGlow();
+    this.initParallax();
+    this.initReveal();
+    this.initTilt();
+    this.initBillboard();
+    this.initMorph();
+    this.initLang();
+  }
+
+  // scroll-linked morph: border-radius + scale + rotate driven by scroll progress
+  initMorph() {
+    const els = Array.from((this.rootEl || document).querySelectorAll('[data-morph]'));
+    if (!els.length) return;
+    els.forEach((el, i) => {
+      if (el.dataset.morphInit) return;
+      el.dataset.morphInit = '1';
+      el.__dir = (i % 2 === 0) ? -3.2 : 3.2;
+      el.style.transformOrigin = 'center';
+      el.style.transition = 'transform .12s linear, border-radius .12s linear, opacity .3s ease';
+      el.style.willChange = 'transform, border-radius';
+    });
+    let ticking = false;
+    const update = () => {
+      const vh = window.innerHeight;
+      els.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        let p = (vh - r.top) / (vh * 0.62);
+        p = Math.max(0, Math.min(1, p));
+        const e = 1 - Math.pow(1 - p, 3);
+        const radius = Math.round(72 - 56 * e);
+        const scale = (0.9 + 0.1 * e).toFixed(4);
+        const ty = ((1 - e) * 44).toFixed(1);
+        const rot = ((1 - e) * el.__dir).toFixed(2);
+        el.style.borderRadius = radius + 'px';
+        el.style.transform = `translateY(${ty}px) scale(${scale}) rotate(${rot}deg)`;
+        el.style.opacity = (0.12 + 0.88 * Math.min(1, p * 1.5)).toFixed(3);
+      });
+      ticking = false;
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    this.on(window, 'scroll', onScroll, { passive: true });
+    this.on(window, 'resize', onScroll);
+    update();
+  }
+
+  // per-frame luma key: knock the light studio backdrop out of render videos
+  initKnockout() {
+    const vids = Array.from((this.rootEl || document).querySelectorAll('video[data-knockout]'));
+    if (!vids.length) return;
+    const CAP = 540; // processing resolution cap
+    vids.forEach((v) => {
+      if (v.dataset.koInit) return; // guard against hot-reload double-init
+      v.dataset.koInit = '1';
+      const canvas = document.createElement('canvas');
+      canvas.style.cssText = 'width:100%; display:block;';
+      v.style.display = 'none';
+      v.parentNode.insertBefore(canvas, v);
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      let sized = false, last = 0;
+      const draw = (t) => {
+        v.__raf = requestAnimationFrame(draw);
+        if (t - last < 45) return; // throttle ~22fps
+        last = t;
+        if (v.readyState < 2 || !v.videoWidth) return;
+        if (!sized) {
+          const ar = v.videoHeight / v.videoWidth;
+          canvas.width = Math.min(CAP, v.videoWidth);
+          canvas.height = Math.round(canvas.width * ar);
+          sized = true;
+        }
+        try {
+          ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+          const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const d = img.data;
+          for (let i = 0; i < d.length; i += 4) {
+            const r = d[i], g = d[i + 1], b = d[i + 2];
+            const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+            const neutral = mx - mn;              // low = greyish
+            const bright = mn;                    // brightness of dimmest channel
+            const fade = Math.max(0, Math.min(1, (bright - 140) / 40));
+            const neu = Math.max(0, Math.min(1, (40 - neutral) / 16));
+            const remove = fade * neu;
+            if (remove > 0) d[i + 3] = Math.round(255 * (1 - remove));
+          }
+          ctx.putImageData(img, 0, 0);
+        } catch (err) {}
+      };
+      const start = () => { v.play().catch(() => {}); if (!v.__raf) v.__raf = requestAnimationFrame(draw); };
+      if (v.readyState >= 2) start(); else this.on(v, 'loadeddata', start);
+      this._cleanup.push(() => { if (v.__raf) cancelAnimationFrame(v.__raf); });
+    });
+  }
+
+  // cursor-follow glow + portrait mouse parallax
+  initGlow() {
+    let tx = window.innerWidth / 2, ty = window.innerHeight / 2, cx = tx, cy = ty;
+    this._mx = 0; this._my = 0;
+    const move = (e) => {
+      tx = e.clientX; ty = e.clientY;
+      this._mx = (e.clientX / window.innerWidth - 0.5);
+      this._my = (e.clientY / window.innerHeight - 0.5);
+    };
+    this.on(window, 'pointermove', move, { passive: true });
+    const loop = () => {
+      cx += (tx - cx) * 0.14; cy += (ty - cy) * 0.14;
+      if (this.glowEl) this.glowEl.style.transform = `translate(${cx}px, ${cy}px)`;
+      if (this.portraitEl) this.portraitEl.style.transform = `translate(${this._mx * -14}px, ${this._my * -14}px) rotateX(${this._my * 3}deg) rotateY(${this._mx * -4}deg)`;
+      this._glowRaf = requestAnimationFrame(loop);
+    };
+    loop();
+    this._cleanup.push(() => cancelAnimationFrame(this._glowRaf));
+  }
+
+  // scroll parallax on [data-parallax]
+  initParallax() {
+    const els = Array.from((this.rootEl || document).querySelectorAll('[data-parallax]'));
+    if (!els.length) return;
+    let ticking = false;
+    const update = () => {
+      const vh = window.innerHeight;
+      els.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        const center = r.top + r.height / 2;
+        const off = (center - vh / 2) / vh;
+        const sp = parseFloat(el.getAttribute('data-speed')) || 0.05;
+        el.style.willChange = 'transform';
+        const prev = el.__base || '';
+        el.style.transform = `${prev} translateY(${off * sp * 260}px)`;
+      });
+      ticking = false;
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    this.on(window, 'scroll', onScroll, { passive: true });
+    this.on(window, 'resize', onScroll);
+    update();
+  }
+
+  initReveal() {
+    const els = Array.from((this.rootEl || document).querySelectorAll('[data-reveal]'));
+    if (!('IntersectionObserver' in window) || !els.length) {
+      els.forEach((el) => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const el = e.target;
+          const d = parseInt(el.getAttribute('data-delay') || '0', 10);
+          setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, d);
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach((el) => io.observe(el));
+    this._cleanup.push(() => io.disconnect());
+  }
+
+  // hover tilt on [data-tilt]
+  initTilt() {
+    const els = Array.from((this.rootEl || document).querySelectorAll('[data-tilt]'));
+    els.forEach((el) => {
+      el.style.transition = 'transform .35s cubic-bezier(.16,1,.3,1)';
+      el.style.transformStyle = 'preserve-3d';
+      const move = (e) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transition = 'transform .08s linear';
+        el.style.transform = `perspective(900px) rotateX(${py * -8}deg) rotateY(${px * 10}deg) translateZ(6px)`;
+      };
+      const leave = () => {
+        el.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1)';
+        el.style.transform = 'perspective(900px) rotateX(0) rotateY(0)';
+      };
+      this.on(el, 'pointermove', move);
+      this.on(el, 'pointerleave', leave);
+    });
+  }
+
+  // drag-to-rotate billboard + design/env switching
+  initBillboard() {
+    if (!this.stageEl || !this.rigEl) return;
+    this.rot = -20; this.vel = 0; this.dragging = false; this.idle = 0;
+    const apply = () => {
+      this.rigEl.style.transform = `rotateX(-3deg) rotateY(${this.rot}deg)`;
+    };
+    const loop = () => {
+      if (!this.dragging) {
+        this.rot += this.vel; this.vel *= 0.93;
+        if (Math.abs(this.vel) < 0.03) { this.idle += 0.008; this.rot += Math.sin(this.idle) * 0.05; }
+        if (this.rot > 46) { this.rot = 46; this.vel *= -0.4; }
+        if (this.rot < -46) { this.rot = -46; this.vel *= -0.4; }
+      }
+      apply();
+      this._raf = requestAnimationFrame(loop);
+    };
+    loop();
+
+    let startX = 0, startRot = 0, lastX = 0;
+    const down = (e) => {
+      if (e.target.closest('[data-env]')) return;
+      this.dragging = true; startX = e.clientX; lastX = e.clientX; startRot = this.rot; this.vel = 0;
+      this.stageEl.style.cursor = 'grabbing';
+      try { this.stageEl.setPointerCapture(e.pointerId); } catch (err) {}
+    };
+    const move = (e) => {
+      if (!this.dragging) return;
+      const nr = startRot + (e.clientX - startX) * 0.4;
+      this.vel = (e.clientX - lastX) * 0.4; lastX = e.clientX;
+      this.rot = Math.max(-46, Math.min(46, nr));
+    };
+    const up = () => { this.dragging = false; this.stageEl.style.cursor = 'grab'; };
+    this.on(this.stageEl, 'pointerdown', down);
+    this.on(this.stageEl, 'pointermove', move);
+    this.on(this.stageEl, 'pointerup', up);
+    this.on(this.stageEl, 'pointercancel', up);
+
+    // design thumbnails
+    if (this.bbSelEl) {
+      const btns = Array.from(this.bbSelEl.querySelectorAll('[data-bb]'));
+      btns.forEach((b) => {
+        this.on(b, 'click', () => {
+          const img = b.getAttribute('data-img');
+          if (this.panelImg && img) this.panelImg.src = img;
+          btns.forEach((x) => { x.style.borderColor = 'rgba(150,160,220,.16)'; x.style.boxShadow = 'none'; });
+          b.style.borderColor = 'rgba(181,171,252,.7)';
+          b.style.boxShadow = '0 0 24px rgba(120,130,240,.3)';
+          this.vel = 2.4; // nudge spin on switch
+        });
+      });
+    }
+
+    // environment toggle
+    if (this.envEl) {
+      const ebtns = Array.from(this.envEl.querySelectorAll('[data-env]'));
+      ebtns.forEach((b) => {
+        this.on(b, 'click', () => {
+          const env = b.getAttribute('data-env');
+          if (this.roadEl) this.roadEl.style.display = env === 'road' ? 'block' : 'none';
+          if (this.cityEl) this.cityEl.style.display = env === 'city' ? 'block' : 'none';
+          ebtns.forEach((x) => { x.style.background = 'transparent'; x.style.color = '#9297b3'; });
+          b.style.background = '#5d5294'; b.style.color = '#f5f4ff';
+        });
+      });
+    }
+  }
+
+  initLang() {
+    if (!this.langEl) return;
+    const set = (lang) => {
+      const root = this.rootEl || document;
+      root.querySelectorAll('[data-vi]').forEach((el) => { el.style.display = lang === 'vi' ? '' : 'none'; });
+      root.querySelectorAll('[data-en]').forEach((el) => { el.style.display = lang === 'en' ? '' : 'none'; });
+      this.langEl.querySelectorAll('[data-lang]').forEach((b) => {
+        const on = b.getAttribute('data-lang') === lang;
+        b.style.background = on ? '#5d5294' : 'transparent';
+        b.style.color = on ? '#f5f4ff' : '#9297b3';
+      });
+    };
+    this.langEl.querySelectorAll('[data-lang]').forEach((b) => {
+      this.on(b, 'click', () => set(b.getAttribute('data-lang')));
+    });
+    set('vi');
+  }
+}
+</script>
+</body>
+</html>
